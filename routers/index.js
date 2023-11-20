@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Url = require('../model/url')
 
-// Code for redirecting short url to long url
+// Code for redirecting to long url after Clicking short url 
 router.get('/:code', async (req, res)=>{
     try {
         const url = await Url.findOne({urlCode: req.params.code})
