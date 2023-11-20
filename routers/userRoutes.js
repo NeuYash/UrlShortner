@@ -11,10 +11,13 @@ const crypto = require('crypto');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }))
 
+
 router.get('/', () => {
     console.log("hello welcome")
 })
 
+//Create endpoint: For user Creation
+// Takes in userType and name
 router.post('/create', async (req, res) => {
 
     const newUser = new User({
@@ -32,6 +35,7 @@ router.post('/create', async (req, res) => {
     })
 })
 
+// Shorten endPoint: shortens the Long url based on custom hash function.
 router.post('/shorten', async (req, res) => {
     const { longUrl, id } = req.body;
     let existingShortUrl = await Url.findOne({ longUrl });
@@ -84,6 +88,7 @@ router.post('/shorten', async (req, res) => {
 });
 
 
+//History endPoint: provides history of user shortened urls
 router.get('/history/:userId', async (req, res) => {
     const userId = req.params.userId;
 
@@ -109,11 +114,15 @@ router.get('/history/:userId', async (req, res) => {
     }
 });
 
+//Custom hash function
+//Could have used personal hash values but wont be scalable for a large system.
+//NPM configures the hash function based on key provided and incoming values.
 // Use a hashing algorithm (e.g., SHA-256) to create a hash from the input
 function hashString(input) {
     return crypto.createHash('sha256').update(input).digest('hex');
 }
 
+// Custom function to generate a short url based on long url.
 // Combine hashedLongUrl, userId, and other information to create a unique short URL
 // This is a basic example for illustration purposes
 function generateShortUrl(hashedLongUrl, userId) {
