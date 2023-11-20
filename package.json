@@ -1,0 +1,27 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "config": "^3.3.9",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongod": "^2.0.0",
+    "mongodb": "^6.2.0",
+    "mongoose": "^5.13.21",
+    "shortid": "^2.2.16",
+    "url": "^0.11.3",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
