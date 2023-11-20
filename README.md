@@ -8,12 +8,13 @@ This project is a URL Shortener service built with MongoDB and Node.js. It allow
 ## Features
 
 1. **Shorten URLs:** Easily create short URLs for long links, making them more manageable and shareable.
+   extra feature: For particular user, if he has already shortened a Long Url, and tries to shorten it again, User will get the old shortened url. Thus saves processing time and DB space.
 
-2. **User-Specific Short URLs:** Each user has a unique hashed ID, ensuring personalized and secure short URLs.
+3. **User-Specific Short URLs:** Each user has a unique hashed ID, ensuring personalized and secure short URLs.
 
-3. **History Tracking:** Keep track of the shortened URLs created by a specific user.
+4. **History Tracking:** Keep track of the shortened URLs created by a specific user.
 
-4. **Tier Limit Handling:** The system gracefully handles errors when a user reaches their tier limit for creating short URLs.
+5. **Tier Limit Handling:** The system gracefully handles errors when a user reaches their tier limit for creating short URLs.
 
 ## Technologies Used
 
@@ -58,11 +59,18 @@ This project is a URL Shortener service built with MongoDB and Node.js. It allow
 
 1. **Shorten a URL:**
 
-   - Send a POST request to `/shorten` with the long URL.
+   - Send a POST request to `/shorten` with a JSON body consisting LongUrl and id(UserID).
 
 2. **Access Shortened URLs History:**
 
    - Send a GET request to `/history/:userId` to retrieve the history of shortened URLs for a specific user.
+
+3. **Create User:**
+
+   - Send a POST request to `/create` to create Tier based users.
+   - Tier1: Can shorten 5 urls
+   - Tier2: Can Shorten 4 urls
+   - Tier based structure for demo purpose.
 
 ## Error Handling
 
